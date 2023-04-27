@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { GlobalStyle } from './GlobalStyle';
 import { FormContact } from './FormContact/FormContact';
 import { ContactList } from './ContactList/ContactList';
 import { Layout } from './Layout/Layout';
@@ -72,6 +73,7 @@ export class App extends Component {
             onDelete={this.deleteContact}
           />
         </div>
+        <GlobalStyle />
       </Layout>
     );
   }

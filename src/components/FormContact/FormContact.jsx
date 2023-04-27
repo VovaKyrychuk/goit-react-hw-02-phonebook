@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import { Form } from './FormContact.styled';
+import { FormLabel } from './FormContact.styled';
+import { Button } from './FormContact.styled';
+import { FormInput } from './FormContact.styled';
 
 export class FormContact extends Component {
   state = {
@@ -29,10 +33,10 @@ export class FormContact extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor={this.nameId}>
+      <Form onSubmit={this.handleSubmit}>
+        <FormLabel htmlFor={this.nameId}>
           Name
-          <input
+          <FormInput
             type="text"
             name="name"
             value={this.state.name}
@@ -42,10 +46,10 @@ export class FormContact extends Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </label>
-        <label htmlFor={this.numberId}>
+        </FormLabel>
+        <FormLabel htmlFor={this.numberId}>
           Number
-          <input
+          <FormInput
             type="tel"
             name="number"
             id={this.numberId}
@@ -55,9 +59,9 @@ export class FormContact extends Component {
             value={this.state.number}
             onChange={this.handleChange}
           />
-        </label>
-        <button type="submit">Add contact</button>
-      </form>
+        </FormLabel>
+        <Button type="submit">Add contact</Button>
+      </Form>
     );
   }
 }
