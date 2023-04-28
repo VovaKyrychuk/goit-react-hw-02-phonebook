@@ -17,13 +17,19 @@ export class FormContact extends Component {
 
   handleChange = event => {
     const { name, value } = event.currentTarget;
-
     this.setState({ [name]: value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onSubmit(this.state);
+
+    const newContact = {
+      id: nanoid(),
+      name: this.state.name,
+      number: this.state.number,
+    };
+
+    this.props.onSubmit(newContact);
     this.resetForm();
   };
 

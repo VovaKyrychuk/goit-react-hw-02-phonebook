@@ -21,18 +21,20 @@ export class App extends Component {
   };
 
   addContact = newContact => {
-    this.state.contacts.filter(
+    const isDuplicate = this.state.contacts.some(
       contact =>
         contact.name.toLowerCase().trim() ===
           newContact.name.toLowerCase().trim() ||
         contact.number.trim() === newContact.number.trim()
-    ).length
-      ? alert(`${newContact.name}: is already in contacts`)
-      : this.setState(prevState => {
-          return {
-            contacts: [newContact, ...prevState.contacts],
-          };
-        });
+    );
+
+    if (isDuplicate) {
+      alert(`${newContact.name}: is already in contacts`);
+    } else {
+      this.setState(prevState => ({
+        contacts: [...prevState.contacts, newContact],
+      }));
+    }
   };
 
   deleteContact = contactId => {
@@ -69,6 +71,7 @@ export class App extends Component {
           <h2>Contacts</h2>
           <Filter value={filter} onChange={this.changeFilter} />
           <ContactList
+            // contacts={this.state.contacts}
             contacts={visibleContacts}
             onDelete={this.deleteContact}
           />
