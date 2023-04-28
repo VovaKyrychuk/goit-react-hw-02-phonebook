@@ -4,6 +4,7 @@ import { Form } from './FormContact.styled';
 import { FormLabel } from './FormContact.styled';
 import { Button } from './FormContact.styled';
 import { FormInput } from './FormContact.styled';
+import PropTypes from 'prop-types';
 
 export class FormContact extends Component {
   state = {
@@ -71,3 +72,6 @@ export class FormContact extends Component {
     );
   }
 }
+FormContact.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
